@@ -2,6 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import * as archiver from 'archiver';
+import * as extract from 'extract-zip';
 
 function getAllFiles(dir: string, fileList: string[] = []): string[] {
   const files = fs.readdirSync(dir);
@@ -79,4 +80,25 @@ export async function restoreFolder(
   foldler: any,
   password: string,
   target?: string
-) {}
+) {
+  const backupDir = foldler.backupDir;
+  const files = fs
+    .readdirSync(backupDir)
+    .filter((f) => f.startsWith(foldler.name) && f.endsWith('.zip.enc'))
+    .sort();
+
+  if (!files.length) throw new Error('No backups found');
+  const latest = files[files.length - 1] || '';
+  const encryptedPath = path.join(backupDir, latest);
+
+  const tempZip = path.join(process.cwd(), latest?.replace('.enc', ''));
+  await decryptFile(encryptedPath, tempZip, password);
+
+  await extract(tempZip, {
+    dir: target ? path.resolve(target) : process.cwd(),
+  });
+
+  fs.unlinkSync(tempZip);
+
+  // TODO: Log entry
+}

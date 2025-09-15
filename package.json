@@ -5,6 +5,7 @@
     "@types/readline-sync": "^1.4.8",
     "archiver": "^7.0.1",
     "commander": "^14.0.1",
+    "extract-zip": "^2.0.1",
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
