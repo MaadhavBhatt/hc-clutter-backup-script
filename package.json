@@ -1,7 +1,9 @@
 {
   "type": "module",
   "dependencies": {
+    "@types/archiver": "^6.0.3",
     "@types/readline-sync": "^1.4.8",
+    "archiver": "^7.0.1",
     "commander": "^14.0.1",
     "readline-sync": "^1.4.10"
   },
