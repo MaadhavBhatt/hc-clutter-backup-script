@@ -8,9 +8,9 @@
     "noEmitOnError": true,
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
-    "module": "esnext",
-    "moduleResolution": "node",
-    "target": "esnext",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "target": "es2016",
     "types": [
       "node"
     ],
@@ -40,5 +40,6 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
+    "noEmit": true
   }
 }

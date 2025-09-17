@@ -1,5 +1,5 @@
-import { getConfig, getPasswordForFolder } from './config';
-import { backupFolder } from './backupLogic';
+import { getConfig, getPasswordForFolder } from './config.js';
+import { backupFolder } from './backupLogic.js';
 
 export async function backupCommand(options: { full?: boolean }) {
   const config = getConfig();
