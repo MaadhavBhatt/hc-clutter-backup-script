@@ -1,5 +1,5 @@
-import { getConfig, getPasswordForFolder } from './config';
-import { restoreFolder } from './backupLogic';
+import { getConfig, getPasswordForFolder } from './config.js';
+import { restoreFolder } from './backupLogic.js';
 
 export async function restoreCommand(
   folderName: string,

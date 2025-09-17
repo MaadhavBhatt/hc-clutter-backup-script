@@ -1,8 +1,7 @@
-#! /usr/bin/env node
 import { program } from 'commander';
-import { backupCommand } from './lib/backup';
-import { restoreCommand } from './lib/restore';
-import { initConfigCommand } from './lib/initConfig';
+import { backupCommand } from './lib/backup.js';
+import { restoreCommand } from './lib/restore.js';
+import { initConfigCommand } from './lib/initConfig.js';
 
 program
   .name('cold-backup-cli')
