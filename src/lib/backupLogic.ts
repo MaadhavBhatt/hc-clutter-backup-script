@@ -1,8 +1,8 @@
 import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
-import * as archiver from 'archiver';
-import * as extract from 'extract-zip';
+import archiver from 'archiver';
+import extract  from 'extract-zip';
 
 function getAllFiles(dir: string, fileList: string[] = []): string[] {
   const files = fs.readdirSync(dir);
@@ -49,6 +49,7 @@ function decryptFile(inputPath: string, outputPath: string, password: string) {
 
 export async function backupFolder(
   folder: any,
+  backupDir: string,
   password: string,
   full?: boolean
 ) {
@@ -66,7 +67,6 @@ export async function backupFolder(
   });
   await archive.finalize();
 
-  const backupDir = folder.backupDir;
   if (!fs.existsSync(backupDir)) fs.mkdirSync(backupDir, { recursive: true });
   const encryptedPath = path.join(backupDir, `${backupName}.enc`);
   await encryptFile(tempZip, encryptedPath, password);
@@ -78,10 +78,10 @@ export async function backupFolder(
 
 export async function restoreFolder(
   foldler: any,
+  backupDir: string,
   password: string,
   target?: string
 ) {
-  const backupDir = foldler.backupDir;
   const files = fs
     .readdirSync(backupDir)
     .filter((f) => f.startsWith(foldler.name) && f.endsWith('.zip.enc'))
