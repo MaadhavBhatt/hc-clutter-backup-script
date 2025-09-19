@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as crypto from 'crypto';
 import archiver from 'archiver';
-import extract  from 'extract-zip';
+import extract from 'extract-zip';
 
 function getAllFiles(dir: string, fileList: string[] = []): string[] {
   const files = fs.readdirSync(dir);
@@ -77,14 +77,14 @@ export async function backupFolder(
 }
 
 export async function restoreFolder(
-  foldler: any,
+  folder: any,
   backupDir: string,
   password: string,
   target?: string
 ) {
   const files = fs
     .readdirSync(backupDir)
-    .filter((f) => f.startsWith(foldler.name) && f.endsWith('.zip.enc'))
+    .filter((f) => f.startsWith(folder.name) && f.endsWith('.zip.enc'))
     .sort();
 
   if (!files.length) throw new Error('No backups found');
