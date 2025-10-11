@@ -12,6 +12,6 @@ export async function restoreCommand(
     process.exit(1);
   }
   const password = await getPasswordForFolder(folderName);
-  await restoreFolder(folder, config.backupDir, password, options.target);
+  await restoreFolder(folderName, config.backupDir, password, options.target);
   console.log('Restore complete.');
 }
