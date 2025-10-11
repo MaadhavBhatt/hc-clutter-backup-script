@@ -18,5 +18,4 @@ I made this tool to manage external backups of important folders on my computer.
    ```bash
    npm install
    ```
-3. Run `tsc` to compile the TypeScript files.
-4. Run the tool using `node dist/index.js <command>`.
+3. Run `npm run dev` to start the application in development mode. This is the only mode available as of now.
