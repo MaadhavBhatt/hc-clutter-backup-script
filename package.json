@@ -1,12 +1,16 @@
 {
   "type": "module",
+  "scripts": {
+    "dev": "npx tsx src/index.ts"
+  },
   "dependencies": {
     "@types/archiver": "^6.0.3",
     "@types/readline-sync": "^1.4.8",
     "archiver": "^7.0.1",
     "commander": "^14.0.1",
     "extract-zip": "^2.0.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "tsx": "^4.20.6"
   },
   "devDependencies": {
     "@types/node": "^24.4.0",
