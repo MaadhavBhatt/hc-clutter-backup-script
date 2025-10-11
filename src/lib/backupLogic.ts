@@ -56,9 +56,22 @@ function decryptFile(inputPath: string, outputPath: string, password: string) {
   return new Promise<void>((resolve, reject) => {
     input.pipe(decipher).pipe(output);
     output.on('finish', () => resolve());
-    output.on('error', reject);
+    output.on('error', (err) => handleDecryptionError(err, reject));
     input.on('error', reject);
+    decipher.on('error', (err) => handleDecryptionError(err, reject));
   });
+
+  function handleDecryptionError(err: any, reject: (err: any) => void) {
+    if (
+      err.code === 'ERR_OSSL_BAD_DECRYPT' ||
+      (err.message && err.message.includes('bad decrypt'))
+    ) {
+      console.error('Decryption failed: Incorrect password or corrupted file.');
+      process.exitCode = 2;
+      return;
+    }
+    reject(err);
+  }
 }
 
 export async function backupFolder(
