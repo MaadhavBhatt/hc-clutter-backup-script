@@ -11,7 +11,7 @@ export async function restoreCommand(
     console.error('Folder not found in config.');
     process.exit(1);
   }
-  const password = await getPasswordForFolder(folder.name);
+  const password = await getPasswordForFolder(folderName);
   await restoreFolder(folder, config.backupDir, password, options.target);
   console.log('Restore complete.');
 }

@@ -77,14 +77,14 @@ export async function backupFolder(
 }
 
 export async function restoreFolder(
-  folder: any,
+  folderName: string,
   backupDir: string,
   password: string,
   target?: string
 ) {
   const files = fs
     .readdirSync(backupDir)
-    .filter((f) => f.startsWith(folder.name) && f.endsWith('.zip.enc'))
+    .filter((f) => f.startsWith(folderName) && f.endsWith('.zip.enc'))
     .sort();
 
   if (!files.length) throw new Error('No backups found');
