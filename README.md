@@ -1,15 +1,16 @@
 # StashCLI
 
-A TypeScript CLI tool to backup and restore folders with encryption support.
+A TypeScript-based CLI tool for backing up and restoring important folders with AES-256 encryption. Perfect for creating encrypted cold storage backups of your critical data.
 
-I made this tool to manage external backups of important folders on my computer. This project was also submitted to [Hack Club's](https://hackclub.com/) [Clutter](https://clutter.hackclub.com/) You-Ship-We-Ship Programme.
+I made this tool to manage external backups of important folders on my computer.
 
 ## Features
 
-- Backup folders to a specified directory with encryption.
-- Restore folders from backups.
-- Configuration using a JSON file.
-- Command-line interface.
+- Backup folders to a specified directory with AES-256-CBC encryption
+- Restore folders from backups
+- JSON-based configuration for managing multiple folders
+- CLI based on Commander.js
+- Cross-Platform
 
 ## Installation
 
@@ -19,3 +20,30 @@ I made this tool to manage external backups of important folders on my computer.
    npm install
    ```
 3. Run `npm run dev` to start the application in development mode. This is the only mode available as of now.
+
+## Project Structure
+
+```
+hc-clutter-backup-script/
+├── src/
+│   ├── index.ts              # Main CLI entry point and command definitions
+│   └── lib/
+│       ├── backup.ts         # Handles backup command
+│       ├── backupLogic.ts    # Core backup/restore logic with encryption
+│       ├── config.ts         # Configuration file reading and password prompts
+│       ├── initConfig.ts     # Initializes configuration
+│       └── restore.ts        # Handles restore command
+├── cold-backup-config.json   # User configuration file (created after init)
+├── package.json
+├── tsconfig.json             # TypeScript configuration
+├── LICENSE
+└── README.md                 # This file
+```
+
+## License
+
+This project is open source. See the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+This project was created as part of [Hack Club's](https://hackclub.com/) [Clutter](https://clutter.hackclub.com/) You-Ship-We-Ship Programme.
